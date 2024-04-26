@@ -1,4 +1,11 @@
 /* Add application styles & imports to this file! */
 
-html, body { height: 100%; }
+html, body { height: 100%;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.red-snackbar {
+  --mdc-snackbar-container-color: red;
+  --mat-snack-bar-button-color: black;
+  --mdc-snackbar-supporting-text-color: white;
+}

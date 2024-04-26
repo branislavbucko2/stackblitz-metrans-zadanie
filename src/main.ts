@@ -4,7 +4,8 @@ import 'zone.js';
 import {provideRouter, RouterOutlet} from "@angular/router";
 import {appRoutes} from "./app/app-routes";
 import {provideAnimationsAsync} from '@angular/platform-browser/animations/async';
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {ApiErrorInterceptor} from "./app/core/interceptors/api-error.interceptor";
 
 @Component({
     selector: 'app-root',
@@ -24,6 +25,11 @@ bootstrapApplication(App, {
     providers: [
         provideRouter(appRoutes),
         provideAnimationsAsync(),
-        importProvidersFrom(HttpClientModule)
+        importProvidersFrom(HttpClientModule),
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: ApiErrorInterceptor,
+            multi: true,
+        },
     ]
 });

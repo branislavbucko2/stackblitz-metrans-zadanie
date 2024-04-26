@@ -1,5 +1,5 @@
 export interface User {
-    id: number;
+    id?: number | null;
     userId: number;
     title: string;
     completed: boolean;

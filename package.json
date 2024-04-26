@@ -4,7 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build"
+    "build": "ng build",
+    "generate-docs": "typedoc"
   },
   "dependencies": {
     "@angular/animations": "^17.2.0",
@@ -24,6 +25,7 @@
     "@angular-devkit/build-angular": "^17.2.0",
     "@angular/cli": "^17.2.0",
     "@angular/compiler-cli": "^17.2.0",
+    "typedoc": "^0.25.13",
     "typescript": "~5.3.0"
   },
   "overrides": {

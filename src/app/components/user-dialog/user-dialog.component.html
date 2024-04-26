@@ -1,16 +1,27 @@
 <h2 mat-dialog-title>{{ isEditMode ? 'Edit User' : 'Add User' }}</h2>
 <div mat-dialog-content>
-    <form [formGroup]="userForm">
-        <mat-form-field>
-            <input matInput placeholder="Name" name="name" required />
+    <form [formGroup]="userForm" class="dialog-form">
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>User Type</mat-label>
+            <mat-select formControlName="userId">
+                <mat-option *ngFor="let userType of userIdTypeList" [value]="userType.id">
+                    {{ userType.value }}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
-            <mat-checkbox name="isActive">Active</mat-checkbox>
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title" placeholder="Name" />
         </mat-form-field>
+
+        <div class="checkbox-container">
+            <mat-checkbox formControlName="completed">Completed</mat-checkbox>
+        </div>
     </form>
 </div>
-<div mat-dialog-actions>
-    <button mat-button (click)="onCancel()">Cancel</button>
-    <button mat-button [disabled]="!userForm.valid" (click)="onSave()">Save</button>
+
+<div mat-dialog-actions class="dialog-actions">
+    <button mat-button (click)="closeDialog()">Cancel</button>
+    <button mat-button color="primary" [disabled]="!userForm.valid" (click)="onSave()">Save</button>
 </div>
