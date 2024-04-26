@@ -3,7 +3,7 @@ import {
     MatFormField,
     MatLabel,
 } from '@angular/material/form-field';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {
     MAT_DIALOG_DATA,
     MatDialogActions,
@@ -116,7 +116,7 @@ export class UserDialogComponent implements OnInit {
         this.userForm = new FormGroup<UserFormGroupType>({
             id: new FormControl(null),
             userId: new FormControl(null),
-            title: new FormControl(null),
+            title: new FormControl(null, Validators.required),
             completed: new FormControl(null),
         });
     }
