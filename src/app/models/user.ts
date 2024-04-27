@@ -1,6 +1,6 @@
 export interface User {
     id?: number | null;
     userId: number | null;
-    title: string | null;
-    completed: boolean | null;
+    title: string;
+    completed: boolean;
 }
