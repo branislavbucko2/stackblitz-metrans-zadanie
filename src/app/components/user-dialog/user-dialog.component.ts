@@ -96,6 +96,7 @@ export class UserDialogComponent implements OnInit {
      * Saves the user form data and closes the dialog.
      */
     public onSave(): void {
+
         if (this.userForm.valid) { // Ensure the form is valid
             if (!this.userForm.get('id')?.value) { // If no ID, it's a new user
                 this.userService.createUser(<User>this.userForm.value).subscribe((user) => {

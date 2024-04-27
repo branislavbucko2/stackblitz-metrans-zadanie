@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {
     MatTable,
     MatTableDataSource,
@@ -12,18 +12,18 @@ import {
     MatRowDef,
     MatHeaderRowDef,
 } from '@angular/material/table';
-import { User } from '../../models/user';
-import { UserService } from '../../services/user.service';
-import { MatPaginator } from '@angular/material/paginator';
-import { GetUserTypePipe } from '../../pipes/get-user-type.pipe';
-import { ColumnNameEnum } from '../../enums/column-name.enum';
-import { MatSort, MatSortHeader } from '@angular/material/sort';
-import { MatCheckbox } from '@angular/material/checkbox';
+import {User} from '../../models/user';
+import {UserService} from '../../services/user.service';
+import {MatPaginator} from '@angular/material/paginator';
+import {GetUserTypePipe} from '../../pipes/get-user-type.pipe';
+import {ColumnNameEnum} from '../../enums/column-name.enum';
+import {MatSort, MatSortHeader} from '@angular/material/sort';
+import {MatCheckbox} from '@angular/material/checkbox';
 import {MatIconButton, MatFabButton, MatButton} from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
+import {MatIcon} from '@angular/material/icon';
 import {MatDialog, MatDialogConfig, MatDialogRef} from '@angular/material/dialog';
-import { UserDialogComponent } from '../user-dialog/user-dialog.component';
-import { AlertService } from '../../services/alert.service';
+import {UserDialogComponent} from '../user-dialog/user-dialog.component';
+import {AlertService} from '../../services/alert.service';
 
 /**
  * A component that displays a table of users with various actions, such as adding, editing, and deleting users.
@@ -81,7 +81,8 @@ export class UsersTableComponent implements OnInit {
         private userService: UserService,
         private dialog: MatDialog,
         private alertService: AlertService
-    ) {}
+    ) {
+    }
 
     /**
      * Initializes the component and fetches the user data.
@@ -114,7 +115,7 @@ export class UsersTableComponent implements OnInit {
      * @param {User} selectedUser - The user to edit.
      */
     public openEditUserDialog(selectedUser: User): void {
-        const dialogRef: MatDialogRef<UserDialogComponent>  = this.dialog.open(UserDialogComponent, {
+        const dialogRef: MatDialogRef<UserDialogComponent> = this.dialog.open(UserDialogComponent, {
             ...this.dialogConfig,
             data: selectedUser,
         });
@@ -141,9 +142,9 @@ export class UsersTableComponent implements OnInit {
      * @param {number} userId - The ID of the user to delete.
      */
     public deleteUser(userId: number): void {
-        this.userService.deleteUser(userId).subscribe(() => {
+        this.userService.deleteUser(userId).subscribe((deletedUserId) => {
             const userIndexToDelete = this.users.data.findIndex(
-                (user) => user.id === userId
+                (user) => user.id === deletedUserId
             );
 
             if (userIndexToDelete >= 0) {
